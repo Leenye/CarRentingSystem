@@ -1,21 +1,20 @@
 package com.imooc.ex2;
 
 public class Pickup extends Car{
+    private String carLicense;
     private String name;
     private int passengerCapacity;
     private float cargoCapacity;
     private float rent;
 
-    public Pickup(String name, int passengerCapacity, float cargoCapacity, float rent) {
+    public Pickup(String carLicense,String name, int passengerCapacity, float cargoCapacity, float rent) {
+        this.carLicense = carLicense;
         this.name = name;
         this.passengerCapacity = passengerCapacity;
         this.cargoCapacity = cargoCapacity;
         this.rent = rent;
     }
 
-    public String getName() {
-        return name;
-    }
 
     public int getPassengerCapacity() {
         return passengerCapacity;
@@ -25,20 +24,35 @@ public class Pickup extends Car{
         return cargoCapacity;
     }
 
-    public float getRent() {
-        return rent;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setPassengerCapacity(int passengerCapacity) {
         this.passengerCapacity = passengerCapacity;
     }
 
     public void setCargoCapacity(float cargoCapacity) {
         this.cargoCapacity = cargoCapacity;
+    }
+
+    @Override
+    public String getCarLicense() {
+        return carLicense;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public float getRent() {
+        return rent;
+    }
+
+    public void setCarLicense(String carLicense) {
+        this.carLicense = carLicense;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setRent(float rent) {

@@ -18,9 +18,24 @@ public class RentedCarTest {
     public void setUp() throws Exception {
         rentedCar = new RentedCar();
         carMap = new HashMap<String, Integer>();
-        carMap.put("mazida6",1);
-        carMap.put("songhuajiang",3);
+        carMap.put("010",1);
+        carMap.put("101",3);
         rentedCar.setCarMap(carMap);
+    }
+
+    @Test
+    public void testGetTotalNum() throws Exception {
+        assertThat(rentedCar.getTotalNum(), is(4));
+    }
+
+    @Test
+    public void testGetCost() throws Exception {
+        assertThat(rentedCar.getCost(),is(1600F));
+    }
+
+    @Test
+    public void testGetRentedCars(){
+        assertThat(rentedCar.getRentedCars().size(),is(2));
     }
 
     @After
@@ -28,13 +43,4 @@ public class RentedCarTest {
 
     }
 
-    @Test
-    public void testGetTotalNum() throws Exception {
-        assertThat(rentedCar.getTotalNum(),is(3));
-    }
-
-    @Test
-    public void testGetCost() throws Exception {
-        assertThat(rentedCar.getCost(),is(1300F));
-    }
 }

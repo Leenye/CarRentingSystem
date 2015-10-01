@@ -14,8 +14,8 @@ public class CarTest extends App {
 
     @Before
     public void setUp() throws Exception {
-        audiA4 = new PassengerCar("audiA4",4,500);
-        yiweike = new Truck("yiweike",20,1000);
+        audiA4 = new PassengerCar("00","audiA4",4,500);
+        yiweike = new Truck("01","yiweike",20,1000);
     }
 
     @After
@@ -31,5 +31,10 @@ public class CarTest extends App {
     @Test
     public void testGetRent() throws Exception {
         assertThat(yiweike.getRent(), is(1000F));
+    }
+
+    @Test
+    public void testGetLicense() throws Exception {
+        assertThat(yiweike.getCarLicense(), is("01"));
     }
 }

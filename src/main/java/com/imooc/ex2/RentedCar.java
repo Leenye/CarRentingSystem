@@ -1,26 +1,34 @@
 package com.imooc.ex2;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class RentedCar {
     Map<String,Integer> carMap = new HashMap<String, Integer>();
     private int totalNum;
     private float cost;
+    List<Car> rentedCars = new ArrayList<Car>();
 
     public Map<String, Integer> getCarMap() {
         return carMap;
     }
 
     public int getTotalNum() {
-        calculateTotalNum();
+//        calculateTotalNum();
         return totalNum;
     }
 
     public float getCost() {
         calculateTotalCost();
         return cost;
+    }
+
+    public List<Car> getRentedCars() {
+        getRentedCarsList();
+        return rentedCars;
+    }
+
+    public void setRentedCars(List<Car> rentedCars) {
+        this.rentedCars = rentedCars;
     }
 
     public void setCarMap(Map<String, Integer> carMap) {
@@ -42,24 +50,43 @@ public class RentedCar {
         }
     }
 
-    private void calculateTotalCost(){
-        int totalCar = AvailableCar.getAvailableCars().size();
+    public float calculateTotalCost(){
+        Set entries = carMap.entrySet();
+        Iterator iterator = entries.iterator();
+        while (iterator.hasNext()){
+            Map.Entry entry = (Map.Entry) iterator.next();
+            String key = entry.getKey().toString();
+            float rent = getCarInfoByLicense(key).getRent();
+            cost += (int)entry.getValue()*rent;
+        }
+        return cost;
+//        entries.stream().forEach(entry -> {
+//            Map.Entry mapEntry = (Map.Entry) entry;
+//            float rent = getCarInfoByLicense(entry.toString()).getRent();
+//            cost += (float)mapEntry.getValue()*rent;
+//        });
+//        return cost;
+    }
 
-        Set entries = carMap.entrySet( );
-        if(entries != null) {
-            Iterator iterator = entries.iterator( );
-            while(iterator.hasNext( )) {
-                Map.Entry entry = (Map.Entry) iterator.next( );
-                Object key = entry.getKey( );
-                Object value = entry.getValue();
-                for (int i = 0; i < totalCar; i++){
-                    Car currentCar = AvailableCar.getAvailableCars().get(i);
-                    if (key.toString().equals(currentCar.getName())){
-                        cost += Integer.valueOf(value.toString())*currentCar.getRent();
-                        continue;
-                    }
-                }
-            }
+    public Car getCarInfoByLicense(final String license) {
+        for (Car car : AvailableCar.getAvailableCars()){
+            if (car.getCarLicense().equals(license)){
+                return car;
             }
         }
+        return null;
+//        return (Car) AvailableCar.getAvailableCars().stream().filter(car ->car.getCarLicense().equals(license));
+    }
+
+    private void getRentedCarsList(){
+        Iterator iterator = carMap.keySet().iterator();
+        while (iterator.hasNext()){
+            String key = iterator.next().toString();
+            Car  car = getCarInfoByLicense(key);
+            rentedCars.add(car);
+        }
+    }
+
+
+
 }

@@ -3,12 +3,12 @@ package com.imooc.ex2;
 public abstract class Car {
     private String name;
     private float rent;
+    private String carLicense;
 
     public abstract String getName();
 
-    public abstract float getRent();
+    public abstract float getRent() ;
 
-    public abstract void setName(String name);
+    public abstract String getCarLicense();
 
-    public abstract void setRent(float rent);
 }
