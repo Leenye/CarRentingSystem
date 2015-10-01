@@ -15,6 +15,7 @@ public class RentedCar {
     public int getTotalNum() {
         calculateTotalNum();
         return totalNum;
+
     }
 
     public float getCost() {

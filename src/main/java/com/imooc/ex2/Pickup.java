@@ -1,11 +1,8 @@
 package com.imooc.ex2;
 
 public class Pickup extends Car{
-    private String carLicense;
-    private String name;
     private int passengerCapacity;
     private float cargoCapacity;
-    private float rent;
 
     public Pickup(String carLicense,String name, int passengerCapacity, float cargoCapacity, float rent) {
         this.carLicense = carLicense;

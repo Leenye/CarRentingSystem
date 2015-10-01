@@ -1,14 +1,19 @@
 package com.imooc.ex2;
 
-public abstract class Car {
-    private String name;
-    private float rent;
-    private String carLicense;
+public class Car {
+    protected String name;
+    protected float rent;
+    protected String carLicense;
 
-    public abstract String getName();
+    public  String getName(){
+        return name;
+    };
 
-    public abstract float getRent() ;
+    public float getRent() {
+        return rent;
+    }
 
-    public abstract String getCarLicense();
-
+    public String getCarLicense() {
+        return carLicense;
+    }
 }
