@@ -1,9 +1,9 @@
 package com.imooc.ex2;
+
 import java.util.*;
-import java.util.stream.Stream;
 
 public class RentedCar {
-    Map<String,Integer> carMap = new HashMap<String, Integer>();
+    Map<String, Integer> carMap = new HashMap<String, Integer>();
     private int totalNum;
     private float cost;
     List<Car> rentedCars = new ArrayList<Car>();
@@ -15,7 +15,6 @@ public class RentedCar {
     public int getTotalNum() {
         calculateTotalNum();
         return totalNum;
-
     }
 
     public float getCost() {
@@ -44,21 +43,21 @@ public class RentedCar {
         this.cost = cost;
     }
 
-    private void calculateTotalNum(){
+    private void calculateTotalNum() {
         Iterator iterator = carMap.values().iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             totalNum = totalNum + Integer.valueOf(iterator.next().toString());
         }
     }
 
-    public float calculateTotalCost(){
+    public float calculateTotalCost() {
         Set entries = carMap.entrySet();
         Iterator iterator = entries.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             Map.Entry entry = (Map.Entry) iterator.next();
             String key = entry.getKey().toString();
             float rent = getCarInfoByLicense(key).getRent();
-            cost += (int)entry.getValue()*rent;
+            cost += (int) entry.getValue() * rent;
         }
         return cost;
 //        entries.stream().forEach(entry -> {
@@ -70,8 +69,8 @@ public class RentedCar {
     }
 
     public Car getCarInfoByLicense(final String license) {
-        for (Car car : AvailableCar.getAvailableCars()){
-            if (car.getCarLicense().equals(license)){
+        for (Car car : AvailableCar.getAvailableCars()) {
+            if (car.getCarLicense().equals(license)) {
                 return car;
             }
         }
@@ -79,15 +78,14 @@ public class RentedCar {
 //        return (Car) AvailableCar.getAvailableCars().stream().filter(car ->car.getCarLicense().equals(license));
     }
 
-    private void getRentedCarsList(){
+    private void getRentedCarsList() {
         Iterator iterator = carMap.keySet().iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             String key = iterator.next().toString();
-            Car  car = getCarInfoByLicense(key);
+            Car car = getCarInfoByLicense(key);
             rentedCars.add(car);
         }
     }
-
 
 
 }

@@ -6,6 +6,7 @@ public class PassengerCar extends Car {
     public int getPassengerCapacity() {
         return passengerCapacity;
     }
+
     public void setPassengerCapacity(int passengerCapacity) {
         this.passengerCapacity = passengerCapacity;
     }
@@ -18,29 +19,8 @@ public class PassengerCar extends Car {
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getCarLicense() {
-        return carLicense;
-    }
-
-    @Override
-    public float getRent() {
-        return rent;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setCarLicense(String carLicense) {
-        this.carLicense = carLicense;
-    }
-
-    public void setRent(float rent) {
-        this.rent = rent;
+    public void getCarInfo() {
+        System.out.println("carLicense: " + this.getCarLicense() + " name: " + this.getName() +
+                " passengers: " + this.getPassengerCapacity() + " rent/day: " + this.getRent());
     }
 }
