@@ -60,7 +60,7 @@ public class Interaction {
         }
         System.out.println("you've finished the renting process");
         System.out.println("***********************************");
-        System.out.println("You rented " + rentedCar.getTotalNum() + " car. The total cost is " + rentedCar.getCost());
+        System.out.println("You rented " + rentedCar.getTotalNum() + " car. The total cost is " + rentedCar.getCost() + rentedCar.getCost() +rentedCar.getCost());
         System.out.println( "Thank you for your coming");
     }
 

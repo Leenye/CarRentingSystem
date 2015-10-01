@@ -13,7 +13,7 @@ public class RentedCar {
     }
 
     public int getTotalNum() {
-//        calculateTotalNum();
+        calculateTotalNum();
         return totalNum;
     }
 
